@@ -4,7 +4,7 @@ const handleSocketConnection = require("./sockets/socketHandler");
 io.on("connection", handleSocketConnection);
 
 app.get("/", (req,res)=>{
-    res.send("Welcome to memory multiplayer game")
+    res.send("Welcome to the memory multiplayer game")
 });
 
 const PORT = process.env.PORT || 5000;

@@ -5,7 +5,8 @@ const MemoryGame = ({ roomId }) => {
 
 	return (
 		<div className="flex flex-col items-center justify-center h-screen bg-gray-900 text-white">
-			
+			<p className="text-2xl px-4 py-2 text-white transition duration-300">Room Id: {roomId}</p>
+			<p className="px-4 py-2 text-white transition duration-300">Level: {game.level}</p>
 			<div className="grid grid-cols-5 gap-2">
 				{Array.from({ length: game.gridSize }, (_, index) => (
 					<Square game={game} clickSquare={clickSquare} index={index} key={index} />
@@ -20,7 +21,7 @@ function Square({ game, clickSquare, index }) {
 	return (
 		<div
 			key={index}
-			className={`w-12 h-12 border border-gray-600 cursor-pointer transition-all duration-300 ${
+			className={`w-20 h-20 border border-gray-600 cursor-pointer transition-all duration-300 ${
 				game.showBlackSquares && game.correctSquares.includes(index)
 					? "bg-slate-300"
 					: game.clickedSquares.includes(index)

@@ -28,8 +28,17 @@ const handleSocketConnection = (socket) => {
 		});
 
 		socket.on("clickSquare", (index) => {
-			game.handleSquareClick(index);
-			io.to(roomId).emit("clickSquare", game);
+			const status = game.handleSquareClick(index);
+			if (status == "won") {
+				io.to(roomId).emit("startGame", game);
+				setTimeout(() => {
+					game.hideSquares();
+					io.to(roomId).emit("hideSquares", game);
+				}, 1000);
+			} else {
+				io.to(roomId).emit("clickSquare", game);
+			}
+			
 		});
 
 		socket.on("disconnect", () => {
