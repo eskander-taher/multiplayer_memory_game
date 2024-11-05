@@ -5,6 +5,7 @@ const MemoryGame = ({ roomId }) => {
 
 	return (
 		<div className="flex flex-col items-center justify-center h-screen bg-gray-900 text-white">
+			
 			<div className="grid grid-cols-5 gap-2">
 				{Array.from({ length: game.gridSize }, (_, index) => (
 					<Square game={game} clickSquare={clickSquare} index={index} key={index} />
